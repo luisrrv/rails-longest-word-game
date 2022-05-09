@@ -1,0 +1,34 @@
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <div class="container text-center m-5">
+    <h1>Result</h1>
+  </div>
+  <div class="container p-5 d-flex justify-content-center">
+    <% @pletters.each do |letter| %>
+      <h2 class='card m-1 p-2 shadow'><%= letter %></h2>
+    <% end %>
+  </div>
+  <div class="container text-center">
+    <% if @included %>
+      <% if @found %>
+        <p><%= "Congratulations!" %></p>
+          <% @word.split.each do |letter| %>
+            <h2 class='card m-1 p-2'><%= letter %></h2>
+          <% end %>
+        <p><%="is a valid English word!" %></p>
+      <% else %>
+        <p><%= "Sorry but" %></p>
+        <% @word.split.each do |letter| %>
+            <h2 class='card m-1 p-2'><%= letter %></h2>
+          <% end %>
+        <p><%="does not seem to be an English word" %></p>
+      <% end %>
+    <% else %>
+      <p><%= "Sorry but" %></p>
+        <% @word.split.each do |letter| %>
+            <h2 class='card m-1 p-2'><%= letter %></h2>
+          <% end %>
+        <p><%="can't be built out of it" %></p>
+    <% end %>
+    <%= link_to 'Play again', new_path, class: 'btn btn-primary shadow' %>
+  </div>
+</div>

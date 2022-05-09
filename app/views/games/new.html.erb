@@ -1,0 +1,18 @@
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <div class="container text-center m-5">
+    <h1>Longest Word Game</h1>
+  </div>
+  <div class="container p-5 d-flex justify-content-center">
+    <% @letters.each do |letter| %>
+      <h2 class='card m-1 p-2 shadow'><%= letter %></h2>
+    <% end %>
+  </div>
+  <div class="container">
+    <form class="input-group mb-3" action='/score'method='post' >
+      <%= hidden_field_tag :letters, @letters %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="text" name='word' class="form-control shadow" placeholder="Write the longest word you can find" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn btn-primary shadow" type="submit" id="button-addon2">Play</button>
+    </form>
+  </div>
+</div>
